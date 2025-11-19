@@ -2,6 +2,7 @@ package ru.alexeypostnov.yandexlamp.presenter
 
 import android.content.Context
 import android.os.Bundle
+import android.view.HapticFeedbackConstants
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -37,10 +38,12 @@ class MainFragment: Fragment(R.layout.fragment_main) {
         }
 
         binding.on.setOnClickListener {
+            it.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP)
             viewModel.setStateOn()
         }
 
         binding.off.setOnClickListener {
+            it.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP)
             viewModel.setStateOff()
         }
 

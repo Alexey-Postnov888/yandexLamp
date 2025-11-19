@@ -1,6 +1,7 @@
 package ru.alexeypostnov.yandexlamp.presenter.adapters
 
 import android.content.res.ColorStateList
+import android.view.HapticFeedbackConstants
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -20,6 +21,7 @@ class ColorsAdapter(
         fun bind(item: ColorInfo) {
             binding.colorBtn.backgroundTintList = ColorStateList.valueOf(item.androidColor)
             binding.colorBtn.setOnClickListener {
+                it.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP)
                 onButtonListener(item.name)
             }
         }
