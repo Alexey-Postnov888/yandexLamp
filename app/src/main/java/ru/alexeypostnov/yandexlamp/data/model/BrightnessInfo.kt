@@ -1,0 +1,7 @@
+package ru.alexeypostnov.yandexlamp.data.model
+
+data class BrightnessInfo(
+    val max: Int,
+    val min: Int,
+    val precision: Int
+)

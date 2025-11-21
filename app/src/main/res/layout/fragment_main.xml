@@ -14,7 +14,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="40dp"/>
+        android:layout_marginTop="40dp" />
 
     <com.google.android.material.button.MaterialButtonGroup
         android:id="@+id/controllBtnsGroup"
@@ -64,4 +64,54 @@
         android:background="@drawable/rounded_color_area"
         android:padding="10dp" />
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/colors_list"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:paddingVertical="10dp"
+        android:paddingHorizontal="20dp"
+        android:background="@drawable/rounded_color_area">
+
+        <ImageView
+            android:id="@+id/brightness_min_icon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:src="@drawable/brightness_empty_48"
+            app:tint="?attr/colorPrimary" />
+
+        <com.google.android.material.slider.Slider
+            android:id="@+id/brightness_slider"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/brightness_min_icon"
+            app:layout_constraintEnd_toStartOf="@id/brightness_max_icon"
+            app:labelBehavior="floating"
+            android:background="@drawable/rounded_color_area"
+            app:trackHeight="15dp"
+            app:thumbHeight="30dp"
+            app:tickVisibilityMode="hidden"
+            app:trackColorInactive="?attr/colorPrimaryFixedDim"
+            android:layout_marginStart="10dp" />
+
+        <ImageView
+            android:id="@+id/brightness_max_icon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            app:layout_constraintStart_toEndOf="@id/brightness_slider"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:src="@drawable/brightness_full_48"
+            app:tint="?attr/colorPrimary"
+            android:layout_marginStart="10dp"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -47,6 +47,32 @@ class MainFragment: Fragment(R.layout.fragment_main) {
             viewModel.setStateOff()
         }
 
+        viewModel.brightness.observe(viewLifecycleOwner) {
+            it?.let {
+                binding.brightnessSlider.valueFrom = it.min.toFloat()
+                binding.brightnessSlider.valueTo = it.max.toFloat()
+                binding.brightnessSlider.stepSize = it.precision.toFloat()
+
+                viewModel.currentBrightnessLevel.value?.let {
+                    binding.brightnessSlider.value = it.toFloat()
+                }
+            }
+        }
+
+        viewModel.currentBrightnessLevel.observe(viewLifecycleOwner) {
+            it?.let {
+                if (binding.brightnessSlider.value != it.toFloat()) {
+                    binding.brightnessSlider.value = it.toFloat()
+                }
+            }
+        }
+
+        binding.brightnessSlider.addOnChangeListener { slider, value, fromUser ->
+            if (fromUser)
+                slider.performHapticFeedback(HapticFeedbackConstants.TEXT_HANDLE_MOVE)
+                viewModel.setBrightnessLevel(value.toInt())
+        }
+
         super.onViewCreated(view, savedInstanceState)
     }
 
